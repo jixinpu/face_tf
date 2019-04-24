@@ -2,19 +2,26 @@
 该项目基于tensorflow框架，实现了人脸检测、人脸特征提取、人脸属性（包含年龄、性别）功能。
 
 # 预训练模型：
-opencv：
+1. opencv：
 
 https://github.com/opencv/opencv/tree/master/data/haarcascades
 
-dlib:
+2. dlib:
 
 http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
 
-facenet:
+3. facenet:
 
 20180402-114759
-
 https://drive.google.com/file/d/1EXPBSXwTaqrSC0OhUdXNmKSh9qJUQ55-/view
+
+4. 年龄模型：
+https://drive.google.com/drive/folders/0B8N1oYmGLVGWbDZ4Y21GLWxtV1E
+
+5. 性别模型：
+https://drive.google.com/drive/folders/0B8N1oYmGLVGWemZQd3JMOEZvdGs
+
+下载完这些预训练的模型后，放到./pre_models文件夹下面。
 
 # 功能模块
 我们将人脸检测、人脸特征提取、人脸属性的功能进行组合。该项目支持以下几种组合：
@@ -33,14 +40,18 @@ https://drive.google.com/file/d/1EXPBSXwTaqrSC0OhUdXNmKSh9qJUQ55-/view
 
 可以通过model_name这个参数来指定。
 ```
-python demo.py --model_type 'fa' --model_name 'opencv' --file_name './data/1.jpg' --model_dir './pre_models/opencv/haarcascade_frontalface_default.xml'
+python demo.py --model_type 'fa' --model_name 'opencv' \
+            --file_name './data/1.jpg' \
+            --model_dir './pre_models/opencv/haarcascade_frontalface_default.xml'
 ```
 
 ## 人脸特征提取
 需要将训练好的模型下载到pre_models中。
 
 ```
-python demo.py --model_type 'fr' --model_name 'facenet' --file_name './data/2.jpg' --model_dir './pre_models/dlib/shape_predictor_68_face_landmarks.dat'
+python demo.py --model_type 'fr' --model_name 'facenet' \
+            --file_name './data/2.jpg' \
+            --model_dir './pre_models/dlib/shape_predictor_68_face_landmarks.dat'
 ```
 
 ## 人脸属性
